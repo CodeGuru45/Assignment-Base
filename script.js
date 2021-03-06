@@ -10,4 +10,4 @@ async function windowsActions() {
 }
 
 
-window.onload = windowsActions;
+window.onload = windowsActions();
