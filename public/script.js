@@ -13,7 +13,7 @@ async function windowsActions() {
   function findMatches(wordToMatch, food) {
     const resultData =  food.filter((place) => {
         const regex = new RegExp(wordToMatch, 'gi');   
-        return place.name.match(regex) || place.city.match(regex);
+        return place.name.match(regex);
     });
     return resultData
   }
@@ -21,10 +21,8 @@ async function windowsActions() {
   function displayMatches(event) {
     
     const matchesJSON = findMatches(event.target.value, data);
-    let i = 0
+    targetList.innerHTML = '';
     matchesJSON.forEach((item) => {
-      console.log(i)
-      i++; 
       
       const appendItem = document.createElement('li');
       appendItem.innerHTML = `<span class="name">${item.name}</span>` + ' ' + `<span class="category">${item.category}</span>` + ' ' + `<address><span class="address">${item.address_line_1}</span>` + ' ' + `<span class="address">${item.city}</span>` + ' ' + `<span class="address">${item.zip}</span></address>`
